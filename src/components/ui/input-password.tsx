@@ -44,7 +44,7 @@ function InputPassword({
         aria-controls={id}
         aria-label={isVisible ? hidePasswordLabel : showPasswordLabel}
         aria-pressed={isVisible}
-        className="absolute top-0.5 right-0.5 hover:bg-transparent"
+        className="absolute top-1/2 right-1 -translate-y-1/2 hover:bg-transparent"
         disabled={disabled}
         onClick={() => setIsVisible((currentValue) => !currentValue)}
         size="icon-sm"

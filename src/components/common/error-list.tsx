@@ -18,18 +18,21 @@ export function ErrorList({ errors, id }: ErrorListProps) {
   }
 
   return (
-    <ul className="space-y-1 text-sm text-destructive" id={id} role="alert">
+    <section className="mt-4 text-sm flex flex-col gap-2" id={id} role="alert">
       {errors.map(({ field, message }, index) => {
         const fieldKey = `fields.${field}`;
         const fieldLabel = tCommon.has(fieldKey) ? tCommon(fieldKey) : field;
         const errorMessage = tError.has(message) ? tError(message) : message;
 
         return (
-          <li key={`${field}-${message}-${index}`}>
-            <span className="font-medium">{fieldLabel}:</span> {errorMessage}
-          </li>
+          <div
+            className="p-2 border-destructive/20 border bg-destructive/5 text-xs rounded-lg text-destructive/80"
+            key={`${field}-${message}-${index}`}
+          >
+            <span className="font-medium text-destructive">{fieldLabel}:</span> {errorMessage}
+          </div>
         );
       })}
-    </ul>
+    </section>
   );
 }

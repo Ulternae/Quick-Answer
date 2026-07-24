@@ -7,5 +7,11 @@
   "actions": {
     "showPassword": "Show password",
     "hidePassword": "Hide password"
+  },
+  "preferences": {
+    "useLightTheme": "Use light background",
+    "useDarkTheme": "Use dark background",
+    "switchToSpanish": "Switch to Spanish",
+    "switchToEnglish": "Switch to English"
   }
 }
