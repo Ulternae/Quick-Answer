@@ -1,0 +1,8 @@
+{
+  "INVALID_REQUEST": "The request is invalid.",
+  "INVALID_CREDENTIALS": "The email or password is incorrect.",
+  "SESSION_REQUIRED": "You must sign in to continue.",
+  "SESSION_EXPIRED": "Your session has expired. Please sign in again.",
+  "AUTH_SERVICE_UNAVAILABLE": "The authentication service is unavailable. Please try again.",
+  "INTERNAL_ERROR": "An unexpected error occurred. Please try again."
+}

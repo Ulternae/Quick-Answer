@@ -1,0 +1,8 @@
+{
+  "INVALID_REQUEST": "La solicitud no es válida.",
+  "INVALID_CREDENTIALS": "El correo o la contraseña son incorrectos.",
+  "SESSION_REQUIRED": "Debes iniciar sesión para continuar.",
+  "SESSION_EXPIRED": "Tu sesión expiró. Inicia sesión nuevamente.",
+  "AUTH_SERVICE_UNAVAILABLE": "El servicio de autenticación no está disponible. Intenta nuevamente.",
+  "INTERNAL_ERROR": "Ocurrió un error inesperado. Intenta nuevamente."
+}

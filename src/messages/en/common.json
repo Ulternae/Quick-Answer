@@ -1,6 +1,7 @@
 {
   "fields": {
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "error": "Error"
   }
 }
