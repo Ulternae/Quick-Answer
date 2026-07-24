@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { getLocale } from "next-intl/server";
 
-import type { AuthResponse, LoginInput } from "@/features/auth/types/auth.types";
+import type { AuthResponse, LoginActionState, LoginInput } from "@/features/auth/types/auth.types";
 import { formatError } from "@/lib/forms/format-zod-error";
 import { apiRequest, UpstreamApiError } from "@/lib/server/api-client";
 import { persistSession } from "@/lib/server/session";
@@ -12,7 +12,7 @@ type LoginServerAction = {
   data: LoginInput;
 };
 
-const loginServerAction = async ({ data }: LoginServerAction) => {
+const loginServerAction = async ({ data }: LoginServerAction): Promise<LoginActionState> => {
   const locale = await getLocale();
 
   try {

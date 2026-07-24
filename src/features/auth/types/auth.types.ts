@@ -27,10 +27,9 @@ export interface SessionResponse {
 export type LoginInput = z.infer<typeof loginSchema>;
 
 export interface LoginActionState {
+  success: false;
   errors: ErrorView;
-  values: {
-    email: string;
-  };
+  values: LoginInput;
 }
 
 export type AuthErrorCode =

@@ -3,5 +3,9 @@
     "email": "Correo electrónico",
     "password": "Contraseña",
     "error": "Error"
+  },
+  "actions": {
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña"
   }
 }

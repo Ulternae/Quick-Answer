@@ -1,11 +1,9 @@
 import { loginSchema } from "@/features/auth/schemas/auth.schemas";
-import type { LoginInput } from "@/features/auth/types/auth.types";
+import type { LoginActionState } from "@/features/auth/types/auth.types";
 import { loginServerAction } from "./login.server";
-import { ErrorView, formatZodError } from "@/lib/forms/format-zod-error";
+import { formatZodError } from "@/lib/forms/format-zod-error";
 
-type loginResult = { success: true; errors: [] } | { success: false; values: Partial<LoginInput>; errors: ErrorView };
-
-const loginAction = async (_: LoginInput, formData: FormData): Promise<loginResult> => {
+const loginAction = async (_previousState: LoginActionState, formData: FormData): Promise<LoginActionState> => {
   const loginData = Object.fromEntries(formData);
 
   const parsed = loginSchema.safeParse(loginData);
@@ -13,7 +11,10 @@ const loginAction = async (_: LoginInput, formData: FormData): Promise<loginResu
   if (!parsed.success) {
     return {
       success: false,
-      values: loginData,
+      values: {
+        email: String(loginData.email ?? ""),
+        password: String(loginData.password ?? ""),
+      },
       errors: formatZodError(parsed.error),
     };
   }

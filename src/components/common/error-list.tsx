@@ -6,9 +6,10 @@ import type { ErrorView } from "@/lib/forms/format-zod-error";
 
 interface ErrorListProps {
   errors: ErrorView;
+  id?: string;
 }
 
-export function ErrorList({ errors }: ErrorListProps) {
+export function ErrorList({ errors, id }: ErrorListProps) {
   const tCommon = useTranslations("common");
   const tError = useTranslations("error");
 
@@ -17,7 +18,7 @@ export function ErrorList({ errors }: ErrorListProps) {
   }
 
   return (
-    <ul className="space-y-1 text-sm text-destructive" role="alert">
+    <ul className="space-y-1 text-sm text-destructive" id={id} role="alert">
       {errors.map(({ field, message }, index) => {
         const fieldKey = `fields.${field}`;
         const fieldLabel = tCommon.has(fieldKey) ? tCommon(fieldKey) : field;

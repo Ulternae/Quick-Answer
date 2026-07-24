@@ -3,5 +3,9 @@
     "email": "Email",
     "password": "Password",
     "error": "Error"
+  },
+  "actions": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   }
 }
