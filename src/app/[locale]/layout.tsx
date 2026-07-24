@@ -39,7 +39,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={cn("h-full antialiased dark", kameron.className)} suppressHydrationWarning>
+    <html lang={locale} className={cn("h-full antialiased", kameron.className)} suppressHydrationWarning>
       <body className="flex min-h-full flex-col font-sans">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>

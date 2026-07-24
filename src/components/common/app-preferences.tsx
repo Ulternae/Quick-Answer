@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { LanguagesIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -19,8 +19,8 @@ function AppPreferences({ className }: AppPreferencesProps) {
   const pathname = usePathname();
   const router = useRouter();
 
-  const initialIsDark = document.documentElement.classList.contains("dark");
-  const [isDark, setIsDark] = useState(initialIsDark);
+  const initialDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
+  const [isDark, setIsDark] = useState<boolean>(initialDark);
   const [isLanguagePending, startLanguageTransition] = useTransition();
   const nextLocale: Locale = locale === "es" ? "en" : "es";
 
