@@ -4,6 +4,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 
 import { SubmissionActionsCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-actions";
+import { SubmissionPromoterCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-promoter";
 import { SubmissionTitleCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-title";
 import type { ActivitySubmission } from "@/features/submissions/types/submissions.types";
 
@@ -30,9 +31,7 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
       accessorFn: (submission) =>
         `${submission.user.name} ${submission.user.lastname}`.trim(),
       cell: ({ row }) => (
-        <span className="font-medium">
-          {row.original.user.name} {row.original.user.lastname}
-        </span>
+        <SubmissionPromoterCell promoter={row.original.user} />
       ),
     },
     {

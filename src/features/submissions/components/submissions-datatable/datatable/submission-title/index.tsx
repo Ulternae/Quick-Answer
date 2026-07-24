@@ -6,8 +6,8 @@ interface SubmissionTitleCellProps {
 const SubmissionTitleCell = ({ description, title }: SubmissionTitleCellProps) => {
   return (
     <div className="min-w-0">
-      <p className="truncate font-medium">{title}</p>
-      {description ? <p className="mt-0.5 truncate text-xs text-muted-foreground">{description}</p> : null}
+      <p className="truncate font-medium leading-tight">{title}</p>
+      {description ? <p className="truncate text-xs text-muted-foreground leading-tight">{description}</p> : null}
     </div>
   );
 };
