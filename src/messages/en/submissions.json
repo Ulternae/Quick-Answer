@@ -1,4 +1,9 @@
 {
   "title": "Activity submissions",
-  "description": "Review and explore the activity responses submitted by promoters."
+  "description": "Review and explore the activity responses submitted by promoters.",
+  "empty": "No activity submissions found.",
+  "columns": {
+    "activity": "Activity",
+    "promoter": "Promoter"
+  }
 }

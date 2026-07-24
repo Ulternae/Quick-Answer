@@ -1,4 +1,9 @@
 {
   "title": "Respuestas de actividades",
-  "description": "Consulta y explora las respuestas de actividades enviadas por los promotores."
+  "description": "Consulta y explora las respuestas de actividades enviadas por los promotores.",
+  "empty": "No se encontraron respuestas de actividades.",
+  "columns": {
+    "activity": "Actividad",
+    "promoter": "Promotor"
+  }
 }

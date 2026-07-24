@@ -1,4 +1,5 @@
 import { getSubmissionsAction } from "@/features/submissions/actions/get-submissions/get-submissions.action";
+import { SubmissionsDatatable } from "@/features/submissions/components/submissions-datatable";
 import { SubmissionsHeader } from "@/features/submissions/components/submissions-header";
 import type { SubmissionsSearchParams } from "@/features/submissions/types/submissions.types";
 
@@ -15,6 +16,11 @@ async function SubmissionsPanel({ searchParams }: SubmissionsPanelProps) {
   return (
     <section className="min-h-[calc(100svh-7rem)] w-full max-w-5xl">
       <SubmissionsHeader />
+      <div className="pt-6">
+        <SubmissionsDatatable
+          data={submissions.success ? submissions.data.data : []}
+        />
+      </div>
     </section>
   );
 }

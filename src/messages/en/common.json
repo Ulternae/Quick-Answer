@@ -13,5 +13,13 @@
     "useDarkTheme": "Use dark background",
     "switchToSpanish": "Switch to Spanish",
     "switchToEnglish": "Switch to English"
+  },
+  "table": {
+    "no_results": "No results found.",
+    "page": "Page {page} of {totalPages}",
+    "first_page": "Go to first page",
+    "previous_page": "Go to previous page",
+    "next_page": "Go to next page",
+    "last_page": "Go to last page"
   }
 }
