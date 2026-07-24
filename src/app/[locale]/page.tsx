@@ -1,12 +1,38 @@
-import { getTranslations } from "next-intl/server";
+import { redirect } from "next/navigation";
 
-export default async function HomePage() {
-  const t = await getTranslations("common");
+import type { Locale } from "@/i18n/routing";
+import { UpstreamApiError } from "@/lib/server/api-client";
+import { getSessionState } from "@/lib/server/session";
 
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-2 p-6">
-      <h1 className="text-3xl font-semibold">{t("appName")}</h1>
-      <p className="text-muted-foreground">{t("translationCheck")}</p>
-    </main>
-  );
+interface HomePageProps {
+  params: Promise<{
+    locale: Locale;
+  }>;
+}
+
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = await params;
+  let sessionState;
+
+  try {
+    sessionState = await getSessionState();
+  } catch (error) {
+    const errorCode = error instanceof UpstreamApiError ? "AUTH_SERVICE_UNAVAILABLE" : "INTERNAL_ERROR";
+
+    redirect(`/${locale}/login?error=${errorCode}`);
+  }
+
+  if (sessionState.status === "authenticated") {
+    redirect(`/${locale}/submissions`);
+  }
+
+  if (sessionState.status === "refresh-required") {
+    const returnTo = encodeURIComponent(`/${locale}/submissions`);
+
+    redirect(`/api/auth/refresh?locale=${locale}&returnTo=${returnTo}`);
+  }
+
+  const errorQuery = sessionState.reason === "SESSION_EXPIRED" ? "?error=SESSION_EXPIRED" : "";
+
+  redirect(`/${locale}/login${errorQuery}`);
 }
