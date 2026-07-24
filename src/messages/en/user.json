@@ -1,0 +1,12 @@
+{
+  "menuLabel": "Open user menu",
+  "online": "Online",
+  "fields": {
+    "name": "Name",
+    "email": "Email"
+  },
+  "actions": {
+    "signOut": "Sign out",
+    "signingOut": "Signing out"
+  }
+}

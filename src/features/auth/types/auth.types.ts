@@ -1,16 +1,9 @@
 import type { z } from "zod";
 
+import type { SessionUser } from "@/features/user/types/user.types";
 import type { ErrorView } from "@/lib/forms/format-zod-error";
 
 import type { loginSchema } from "../schemas/auth.schemas";
-
-export interface SessionUser {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  avatar: string | null;
-}
 
 export interface AuthResponse {
   tokenType: "Bearer";

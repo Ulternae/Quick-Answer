@@ -13,6 +13,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       auth: (await import(`../messages/${locale}/auth.json`)).default,
       error: (await import(`../messages/${locale}/error.json`)).default,
       submissions: (await import(`../messages/${locale}/submissions.json`)).default,
+      user: (await import(`../messages/${locale}/user.json`)).default,
     },
   };
 });

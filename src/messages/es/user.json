@@ -1,0 +1,12 @@
+{
+  "menuLabel": "Abrir menú de usuario",
+  "online": "En línea",
+  "fields": {
+    "name": "Nombre",
+    "email": "Correo electrónico"
+  },
+  "actions": {
+    "signOut": "Cerrar sesión",
+    "signingOut": "Cerrando sesión"
+  }
+}
