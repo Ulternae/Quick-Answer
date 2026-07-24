@@ -3,7 +3,10 @@ import "server-only";
 import { cookies } from "next/headers";
 import type { NextResponse } from "next/server";
 
-import type { AuthResponse } from "@/features/auth/types/auth.types";
+import type {
+  AuthResponse,
+  SessionResponse,
+} from "@/features/auth/types/auth.types";
 import { apiRequest, type ApiRequestOptions, UpstreamApiError } from "@/lib/server/api-client";
 
 export const ACCESS_TOKEN_COOKIE = "qa_access_token";
@@ -60,7 +63,7 @@ export async function persistSession(auth: AuthResponse) {
   });
 }
 
-async function clearSessionCookieStore() {
+export async function clearSession() {
   const cookieStore = await cookies();
 
   cookieStore.set(ACCESS_TOKEN_COOKIE, "", {
@@ -92,10 +95,11 @@ export async function refreshSession(): Promise<AuthResponse | null> {
     return auth;
   } catch (error) {
     if (error instanceof UpstreamApiError && (error.status === 400 || error.status === 401)) {
-      await clearSessionCookieStore();
+      await clearSession();
       return null;
     }
 
+    await clearSession();
     throw error;
   }
 }
@@ -109,6 +113,51 @@ function withAccessToken(options: ApiRequestOptions, accessToken: string): ApiRe
     ...options,
     headers,
   };
+}
+
+export type SessionState =
+  | {
+      status: "authenticated";
+      session: SessionResponse;
+    }
+  | {
+      status: "refresh-required";
+    }
+  | {
+      status: "anonymous";
+      reason: "SESSION_REQUIRED" | "SESSION_EXPIRED";
+    };
+
+export async function getSessionState(): Promise<SessionState> {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get(ACCESS_TOKEN_COOKIE)?.value;
+  const refreshToken = cookieStore.get(REFRESH_TOKEN_COOKIE)?.value;
+
+  if (!accessToken) {
+    return refreshToken
+      ? { status: "refresh-required" }
+      : { status: "anonymous", reason: "SESSION_REQUIRED" };
+  }
+
+  try {
+    const session = await apiRequest<SessionResponse>(
+      "public/auth/me",
+      withAccessToken({}, accessToken),
+    );
+
+    return {
+      status: "authenticated",
+      session,
+    };
+  } catch (error) {
+    if (error instanceof UpstreamApiError && error.status === 401) {
+      return refreshToken
+        ? { status: "refresh-required" }
+        : { status: "anonymous", reason: "SESSION_EXPIRED" };
+    }
+
+    throw error;
+  }
 }
 
 export async function authenticatedRequest<T>(path: string, options: ApiRequestOptions = {}): Promise<T> {
@@ -142,7 +191,7 @@ export async function authenticatedRequest<T>(path: string, options: ApiRequestO
     return await apiRequest<T>(path, withAccessToken(options, refreshedSession.accessToken));
   } catch (error) {
     if (error instanceof UpstreamApiError && error.status === 401) {
-      await clearSessionCookieStore();
+      await clearSession();
       throw new SessionRequiredError();
     }
 

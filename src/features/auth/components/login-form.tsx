@@ -9,7 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { InputPassword } from "@/components/ui/input-password";
 import { loginAction } from "@/features/auth/actions/login/login.action";
-import type { LoginActionState } from "@/features/auth/types/auth.types";
+import { LOGIN_ERROR_CODES } from "@/features/auth/constants/auth.constants";
+import type { AuthErrorCode, LoginActionState } from "@/features/auth/types/auth.types";
+import type { ErrorView } from "@/lib/forms/format-zod-error";
 
 const INITIAL_STATE: LoginActionState = {
   success: false,
@@ -20,10 +22,20 @@ const INITIAL_STATE: LoginActionState = {
   },
 };
 
-export function LoginForm() {
+interface LoginFormProps {
+  error?: string;
+}
+
+export function LoginForm({ error }: LoginFormProps) {
   const tAuth = useTranslations("auth");
   const tCommon = useTranslations("common");
-  const [state, formAction, isPending] = useActionState<LoginActionState, FormData>(loginAction, INITIAL_STATE);
+  const initialErrors: ErrorView =
+    error && LOGIN_ERROR_CODES.has(error as AuthErrorCode) ? [{ field: "error", message: error }] : [];
+
+  const [state, formAction, isPending] = useActionState<LoginActionState, FormData>(loginAction, {
+    ...INITIAL_STATE,
+    errors: initialErrors,
+  });
   const emailError = state.errors.find(({ field }) => field === "email");
   const passwordError = state.errors.find(({ field }) => field === "password");
 
