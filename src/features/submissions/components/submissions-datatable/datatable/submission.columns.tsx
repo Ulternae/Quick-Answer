@@ -3,6 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 
+import { SubmissionActionsCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-actions";
 import { SubmissionTitleCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-title";
 import type { ActivitySubmission } from "@/features/submissions/types/submissions.types";
 
@@ -32,6 +33,16 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
         <span className="font-medium">
           {row.original.user.name} {row.original.user.lastname}
         </span>
+      ),
+    },
+    {
+      id: "actions",
+      size: 48,
+      minSize: 48,
+      maxSize: 48,
+      header: () => <span className="sr-only">{t("actions")}</span>,
+      cell: ({ row }) => (
+        <SubmissionActionsCell submissionId={row.original.id} />
       ),
     },
   ];

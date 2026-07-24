@@ -2,8 +2,18 @@
   "title": "Respuestas de actividades",
   "description": "Consulta y explora las respuestas de actividades enviadas por los promotores.",
   "empty": "No se encontraron respuestas de actividades.",
+  "errorTitle": "No se pudieron cargar las respuestas de actividades",
   "columns": {
     "activity": "Actividad",
-    "promoter": "Promotor"
+    "promoter": "Promotor",
+    "actions": "Acciones"
+  },
+  "actions": {
+    "openMenu": "Abrir acciones de la respuesta",
+    "viewDetails": "Ver detalle",
+    "backToList": "Volver a las respuestas"
+  },
+  "detail": {
+    "title": "Respuesta de actividad"
   }
 }

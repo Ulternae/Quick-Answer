@@ -2,8 +2,18 @@
   "title": "Activity submissions",
   "description": "Review and explore the activity responses submitted by promoters.",
   "empty": "No activity submissions found.",
+  "errorTitle": "Unable to load activity submissions",
   "columns": {
     "activity": "Activity",
-    "promoter": "Promoter"
+    "promoter": "Promoter",
+    "actions": "Actions"
+  },
+  "actions": {
+    "openMenu": "Open submission actions",
+    "viewDetails": "View details",
+    "backToList": "Back to submissions"
+  },
+  "detail": {
+    "title": "Activity submission"
   }
 }
