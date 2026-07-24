@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import type { AuthErrorResponse, SessionResponse } from "@/features/auth/auth.types";
+import type { AuthErrorResponse, SessionResponse } from "@/features/auth/types/auth.types";
 import { formatError } from "@/lib/forms/format-zod-error";
 import { UpstreamApiError } from "@/lib/server/api-client";
 import { refreshSession } from "@/lib/server/session";
@@ -20,10 +20,7 @@ export async function POST() {
       );
     }
 
-    return NextResponse.json<SessionResponse>(
-      { user: auth.user },
-      { headers: NO_STORE_HEADERS },
-    );
+    return NextResponse.json<SessionResponse>({ user: auth.user }, { headers: NO_STORE_HEADERS });
   } catch (error) {
     if (error instanceof UpstreamApiError) {
       return NextResponse.json<AuthErrorResponse>(

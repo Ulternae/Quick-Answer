@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { loginSchema } from "@/features/auth/auth.schemas";
-import type { AuthErrorResponse, AuthResponse, SessionResponse } from "@/features/auth/auth.types";
+import { loginSchema } from "@/features/auth/schemas/auth.schemas";
+import type { AuthErrorResponse, AuthResponse, SessionResponse } from "@/features/auth/types/auth.types";
 import { formatError, formatZodError } from "@/lib/forms/format-zod-error";
 import { apiRequest, UpstreamApiError } from "@/lib/server/api-client";
 import { setSessionCookies } from "@/lib/server/session";
@@ -36,10 +36,7 @@ export async function POST(request: Request) {
       method: "POST",
       body: result.data,
     });
-    const response = NextResponse.json<SessionResponse>(
-      { user: auth.user },
-      { headers: NO_STORE_HEADERS },
-    );
+    const response = NextResponse.json<SessionResponse>({ user: auth.user }, { headers: NO_STORE_HEADERS });
 
     setSessionCookies(response, auth);
 

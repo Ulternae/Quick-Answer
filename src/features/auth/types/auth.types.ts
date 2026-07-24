@@ -2,7 +2,7 @@ import type { z } from "zod";
 
 import type { ErrorView } from "@/lib/forms/format-zod-error";
 
-import type { loginSchema } from "./auth.schemas";
+import type { loginSchema } from "../schemas/auth.schemas";
 
 export interface SessionUser {
   id: string;
@@ -25,6 +25,13 @@ export interface SessionResponse {
 }
 
 export type LoginInput = z.infer<typeof loginSchema>;
+
+export interface LoginActionState {
+  errors: ErrorView;
+  values: {
+    email: string;
+  };
+}
 
 export type AuthErrorCode =
   | "INVALID_REQUEST"

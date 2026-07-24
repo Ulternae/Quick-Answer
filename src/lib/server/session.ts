@@ -3,7 +3,7 @@ import "server-only";
 import { cookies } from "next/headers";
 import type { NextResponse } from "next/server";
 
-import type { AuthResponse } from "@/features/auth/auth.types";
+import type { AuthResponse } from "@/features/auth/types/auth.types";
 import { apiRequest, type ApiRequestOptions, UpstreamApiError } from "@/lib/server/api-client";
 
 export const ACCESS_TOKEN_COOKIE = "qa_access_token";
@@ -47,7 +47,7 @@ export function clearSessionCookies(response: NextResponse) {
   });
 }
 
-async function setSessionCookieStore(auth: AuthResponse) {
+export async function persistSession(auth: AuthResponse) {
   const cookieStore = await cookies();
 
   cookieStore.set(ACCESS_TOKEN_COOKIE, auth.accessToken, {
@@ -87,7 +87,7 @@ export async function refreshSession(): Promise<AuthResponse | null> {
       body: { refreshToken },
     });
 
-    await setSessionCookieStore(auth);
+    await persistSession(auth);
 
     return auth;
   } catch (error) {
@@ -111,10 +111,7 @@ function withAccessToken(options: ApiRequestOptions, accessToken: string): ApiRe
   };
 }
 
-export async function authenticatedRequest<T>(
-  path: string,
-  options: ApiRequestOptions = {},
-): Promise<T> {
+export async function authenticatedRequest<T>(path: string, options: ApiRequestOptions = {}): Promise<T> {
   const cookieStore = await cookies();
   let accessToken = cookieStore.get(ACCESS_TOKEN_COOKIE)?.value;
 

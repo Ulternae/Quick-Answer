@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import type { AuthErrorResponse, SessionResponse } from "@/features/auth/auth.types";
+import type { AuthErrorResponse, SessionResponse } from "@/features/auth/types/auth.types";
 import { formatError } from "@/lib/forms/format-zod-error";
 import { UpstreamApiError } from "@/lib/server/api-client";
 import { authenticatedRequest, SessionRequiredError } from "@/lib/server/session";
