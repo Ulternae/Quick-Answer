@@ -18,7 +18,7 @@ const SubmissionPromoterCell = ({ promoter }: SubmissionPromoterCellProps) => {
         {promoter.avatar ? <AvatarImage alt={fullName} src={promoter.avatar} /> : null}
         <AvatarFallback className="text-xs">{getInitials(promoter.name, promoter.lastname)}</AvatarFallback>
       </Avatar>
-      <span className="truncate font-medium">{fullName}</span>
+      <span className="truncate">{fullName}</span>
     </div>
   );
 };

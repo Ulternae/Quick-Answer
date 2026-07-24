@@ -6,7 +6,14 @@
   "columns": {
     "activity": "Actividad",
     "promoter": "Promotor",
+    "status": "Estado",
     "actions": "Acciones"
+  },
+  "statuses": {
+    "approved": "Aprobada",
+    "pending": "Pendiente",
+    "review": "En revisión",
+    "rejected": "Rechazada"
   },
   "actions": {
     "openMenu": "Abrir acciones de la respuesta",

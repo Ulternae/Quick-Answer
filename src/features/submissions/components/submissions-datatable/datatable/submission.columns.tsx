@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { SubmissionActionsCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-actions";
 import { SubmissionPromoterCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-promoter";
+import { SubmissionStatusCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-status";
 import { SubmissionTitleCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-title";
 import type { ActivitySubmission } from "@/features/submissions/types/submissions.types";
 
@@ -32,6 +33,15 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
         `${submission.user.name} ${submission.user.lastname}`.trim(),
       cell: ({ row }) => (
         <SubmissionPromoterCell promoter={row.original.user} />
+      ),
+    },
+    {
+      id: "status",
+      accessorKey: "status",
+      minSize: 120,
+      header: t("status"),
+      cell: ({ row }) => (
+        <SubmissionStatusCell status={row.original.status} />
       ),
     },
     {
