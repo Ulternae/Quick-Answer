@@ -1,0 +1,17 @@
+const SUBMISSION_STATUSES = [
+  "approved",
+  "pending",
+  "review",
+  "rejected",
+] as const;
+
+const DEFAULT_SUBMISSIONS_PAGE = 1;
+const DEFAULT_SUBMISSIONS_LIMIT = 10;
+const MAX_SUBMISSIONS_LIMIT = 50;
+
+export {
+  DEFAULT_SUBMISSIONS_LIMIT,
+  DEFAULT_SUBMISSIONS_PAGE,
+  MAX_SUBMISSIONS_LIMIT,
+  SUBMISSION_STATUSES,
+};

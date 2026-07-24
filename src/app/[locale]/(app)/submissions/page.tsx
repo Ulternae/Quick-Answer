@@ -1,11 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { SubmissionsPanel } from "@/features/submissions/components/submissions-panel";
+import type { SubmissionsSearchParams } from "@/features/submissions/types/submissions.types";
 
-export default async function SubmissionsPage() {
-  const t = await getTranslations("submissions");
+interface SubmissionsPageProps {
+  searchParams: Promise<SubmissionsSearchParams>;
+}
 
+export default function SubmissionsPage({ searchParams }: SubmissionsPageProps) {
   return (
-    <main className="flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center gap-2 p-6">
-      <h1 className="text-3xl font-semibold">{t("title")}</h1>
+    <main className="flex justify-center p-6">
+      <SubmissionsPanel searchParams={searchParams} />
     </main>
   );
 }

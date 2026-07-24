@@ -4,5 +4,7 @@
   "SESSION_REQUIRED": "You must sign in to continue.",
   "SESSION_EXPIRED": "Your session has expired. Please sign in again.",
   "AUTH_SERVICE_UNAVAILABLE": "The authentication service is unavailable. Please try again.",
+  "SUBMISSIONS_UNAVAILABLE": "Activity submissions are unavailable. Please try again.",
+  "SUBMISSION_NOT_FOUND": "The requested activity submission was not found.",
   "INTERNAL_ERROR": "An unexpected error occurred. Please try again."
 }

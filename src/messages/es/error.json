@@ -4,5 +4,7 @@
   "SESSION_REQUIRED": "Debes iniciar sesión para continuar.",
   "SESSION_EXPIRED": "Tu sesión expiró. Inicia sesión nuevamente.",
   "AUTH_SERVICE_UNAVAILABLE": "El servicio de autenticación no está disponible. Intenta nuevamente.",
+  "SUBMISSIONS_UNAVAILABLE": "Las respuestas de actividades no están disponibles. Intenta nuevamente.",
+  "SUBMISSION_NOT_FOUND": "No se encontró la respuesta de actividad solicitada.",
   "INTERNAL_ERROR": "Ocurrió un error inesperado. Intenta nuevamente."
 }
