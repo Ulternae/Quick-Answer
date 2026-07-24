@@ -19,6 +19,10 @@
     "review": "In review",
     "rejected": "Rejected"
   },
+  "filters": {
+    "status": "Status",
+    "allStatuses": "All statuses"
+  },
   "actions": {
     "openMenu": "Open submission actions",
     "viewDetails": "View details",

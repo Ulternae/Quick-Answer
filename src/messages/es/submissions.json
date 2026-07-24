@@ -19,6 +19,10 @@
     "review": "En revisión",
     "rejected": "Rechazada"
   },
+  "filters": {
+    "status": "Estado",
+    "allStatuses": "Todos los estados"
+  },
   "actions": {
     "openMenu": "Abrir acciones de la respuesta",
     "viewDetails": "Ver detalle",

@@ -39,6 +39,15 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
       ),
     },
     {
+      id: "status",
+      accessorKey: "status",
+      minSize: 120,
+      header: t("status"),
+      cell: ({ row }) => (
+        <SubmissionStatusCell status={row.original.status} />
+      ),
+    },
+    {
       id: "pos",
       accessorKey: "pos.name",
       minSize: 220,
@@ -61,15 +70,6 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
       header: t("submittedAt"),
       cell: ({ row }) => (
         <SubmissionDateCell submittedAt={row.original.submittedAt} />
-      ),
-    },
-    {
-      id: "status",
-      accessorKey: "status",
-      minSize: 120,
-      header: t("status"),
-      cell: ({ row }) => (
-        <SubmissionStatusCell status={row.original.status} />
       ),
     },
     {

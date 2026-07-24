@@ -3,6 +3,7 @@ import { SubmissionsDatatable } from "@/features/submissions/components/submissi
 import { SubmissionsError } from "@/features/submissions/components/submissions-error";
 import { SubmissionsHeader } from "@/features/submissions/components/submissions-header";
 import type { SubmissionsSearchParams } from "@/features/submissions/types/submissions.types";
+import { SubmissionStatusFilter } from "./submissions-filters/submission-status-filter";
 
 interface SubmissionsPanelProps {
   searchParams: Promise<SubmissionsSearchParams>;
@@ -15,9 +16,10 @@ async function SubmissionsPanel({ searchParams }: SubmissionsPanelProps) {
   console.info("[SubmissionsPanel] activity submissions", submissions);
 
   return (
-    <section className="min-h-[calc(100svh-7rem)] w-full max-w-5xl">
+    <section className="min-h-[calc(100svh-7rem)] w-full max-w-5xl flex flex-col gap-6">
       <SubmissionsHeader />
-      <div className="pt-6">
+      <SubmissionStatusFilter />
+      <div>
         {submissions.success ? (
           <SubmissionsDatatable
             data={submissions.data.data}
