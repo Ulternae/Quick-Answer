@@ -3,9 +3,13 @@
   "description": "Review and explore the activity responses submitted by promoters.",
   "empty": "No activity submissions found.",
   "errorTitle": "Unable to load activity submissions",
+  "noPointOfSale": "No point of sale",
   "columns": {
     "activity": "Activity",
     "promoter": "Promoter",
+    "company": "Company",
+    "pos": "Point of sale",
+    "submittedAt": "Submitted at",
     "status": "Status",
     "actions": "Actions"
   },

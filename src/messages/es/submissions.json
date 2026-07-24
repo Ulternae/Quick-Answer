@@ -3,9 +3,13 @@
   "description": "Consulta y explora las respuestas de actividades enviadas por los promotores.",
   "empty": "No se encontraron respuestas de actividades.",
   "errorTitle": "No se pudieron cargar las respuestas de actividades",
+  "noPointOfSale": "Sin punto de venta",
   "columns": {
     "activity": "Actividad",
     "promoter": "Promotor",
+    "company": "Empresa",
+    "pos": "Punto de venta",
+    "submittedAt": "Fecha de envío",
     "status": "Estado",
     "actions": "Acciones"
   },

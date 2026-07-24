@@ -4,6 +4,9 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { useTranslations } from "next-intl";
 
 import { SubmissionActionsCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-actions";
+import { SubmissionCompanyCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-company";
+import { SubmissionDateCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-date";
+import { SubmissionPosCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-pos";
 import { SubmissionPromoterCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-promoter";
 import { SubmissionStatusCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-status";
 import { SubmissionTitleCell } from "@/features/submissions/components/submissions-datatable/datatable/submission-title";
@@ -33,6 +36,31 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
         `${submission.user.name} ${submission.user.lastname}`.trim(),
       cell: ({ row }) => (
         <SubmissionPromoterCell promoter={row.original.user} />
+      ),
+    },
+    {
+      id: "pos",
+      accessorKey: "pos.name",
+      minSize: 220,
+      header: t("pos"),
+      cell: ({ row }) => <SubmissionPosCell pos={row.original.pos} />,
+    },
+    {
+      id: "company",
+      accessorKey: "company.name",
+      minSize: 180,
+      header: t("company"),
+      cell: ({ row }) => (
+        <SubmissionCompanyCell company={row.original.company} />
+      ),
+    },
+    {
+      id: "submittedAt",
+      accessorKey: "submittedAt",
+      minSize: 180,
+      header: t("submittedAt"),
+      cell: ({ row }) => (
+        <SubmissionDateCell submittedAt={row.original.submittedAt} />
       ),
     },
     {
