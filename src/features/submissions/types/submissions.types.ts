@@ -87,9 +87,9 @@ export interface ActivitySubmission {
   data: SubmissionData;
   activity: SubmissionActivity;
   user: SubmissionUser;
-  pos: PointOfSale | null;
-  company: SubmissionCompany;
-  environment: SubmissionEnvironment;
+  pos?: PointOfSale | null;
+  company?: SubmissionCompany | null;
+  environment?: SubmissionEnvironment | null;
   createdAt: string;
   updatedAt: string;
 }

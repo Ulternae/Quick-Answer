@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getSubmissionAction } from "@/features/submissions/actions/get-submission/get-submission.action";
 import { SubmissionForm } from "@/features/submissions/components/submission-detail/submission-form";
+import { SubmissionInformation } from "@/features/submissions/components/submission-detail/submission-information";
 import type { ActivitySubmission } from "@/features/submissions/types/submissions.types";
 import type { ErrorView } from "@/lib/forms/format-zod-error";
 
@@ -79,8 +80,8 @@ const SubmissionDetailSheet = ({ children, submissionId }: SubmissionDetailSheet
             <TabsContent className="min-h-0 overflow-y-auto pt-4" value="form">
               <SubmissionForm submission={submission} />
             </TabsContent>
-            <TabsContent className="pt-4 text-muted-foreground" value="detail">
-              View detail
+            <TabsContent className="min-h-0 overflow-y-auto pt-4" value="detail">
+              <SubmissionInformation submission={submission} />
             </TabsContent>
           </Tabs>
         ) : null}

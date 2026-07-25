@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import type { PointOfSale } from "@/features/submissions/types/submissions.types";
 
 interface SubmissionPosCellProps {
-  pos: PointOfSale | null;
+  pos?: PointOfSale | null;
 }
 
 const SubmissionPosCell = ({ pos }: SubmissionPosCellProps) => {

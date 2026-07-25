@@ -49,14 +49,14 @@ function useSubmissionColumns(): ColumnDef<ActivitySubmission>[] {
     },
     {
       id: "pos",
-      accessorKey: "pos.name",
+      accessorFn: (submission) => submission.pos?.name ?? "",
       minSize: 220,
       header: t("pos"),
       cell: ({ row }) => <SubmissionPosCell pos={row.original.pos} />,
     },
     {
       id: "company",
-      accessorKey: "company.name",
+      accessorFn: (submission) => submission.company?.name ?? "",
       minSize: 180,
       header: t("company"),
       cell: ({ row }) => (

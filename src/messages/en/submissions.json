@@ -4,6 +4,8 @@
   "empty": "No activity submissions found.",
   "errorTitle": "Unable to load activity submissions",
   "noPointOfSale": "No point of sale",
+  "noCompany": "No company",
+  "noEnvironment": "No environment",
   "columns": {
     "activity": "Activity",
     "promoter": "Promoter",
@@ -34,6 +36,17 @@
     "tabs": {
       "form": "Form",
       "detail": "Detail"
+    },
+    "fields": {
+      "activity": "Activity",
+      "status": "Status",
+      "promoter": "Promoter",
+      "submittedAt": "Submitted at",
+      "company": "Company",
+      "pointOfSale": "Point of sale",
+      "environment": "Environment",
+      "identifier": "Identifier",
+      "description": "Description"
     },
     "emptyForm": "This form has no fields to display.",
     "noAnswer": "No answer",

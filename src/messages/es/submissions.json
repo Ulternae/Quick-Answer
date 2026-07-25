@@ -4,6 +4,8 @@
   "empty": "No se encontraron respuestas de actividades.",
   "errorTitle": "No se pudieron cargar las respuestas de actividades",
   "noPointOfSale": "Sin punto de venta",
+  "noCompany": "Sin empresa",
+  "noEnvironment": "Sin entorno",
   "columns": {
     "activity": "Actividad",
     "promoter": "Promotor",
@@ -34,6 +36,17 @@
     "tabs": {
       "form": "Formulario",
       "detail": "Detalle"
+    },
+    "fields": {
+      "activity": "Actividad",
+      "status": "Estado",
+      "promoter": "Promotor",
+      "submittedAt": "Fecha de envío",
+      "company": "Empresa",
+      "pointOfSale": "Punto de venta",
+      "environment": "Entorno",
+      "identifier": "Identificador",
+      "description": "Descripción"
     },
     "emptyForm": "Este formulario no tiene campos para mostrar.",
     "noAnswer": "Sin respuesta",
