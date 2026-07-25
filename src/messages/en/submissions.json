@@ -29,7 +29,16 @@
   },
   "detail": {
     "title": "Activity submission",
-    "description": "The submission details are being prepared for the next implementation phase.",
-    "loading": "Loading submission details..."
+    "description": "Review the submitted form and its general information.",
+    "loading": "Loading submission details...",
+    "tabs": {
+      "form": "Form",
+      "detail": "Detail"
+    },
+    "emptyForm": "This form has no fields to display.",
+    "noAnswer": "No answer",
+    "yes": "Yes",
+    "no": "No",
+    "openFile": "Open file in a new tab"
   }
 }

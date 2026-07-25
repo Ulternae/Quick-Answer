@@ -29,7 +29,16 @@
   },
   "detail": {
     "title": "Respuesta de actividad",
-    "description": "El detalle de la respuesta se está preparando para la siguiente fase de implementación.",
-    "loading": "Cargando detalle de la respuesta..."
+    "description": "Consulta el formulario enviado y su información general.",
+    "loading": "Cargando detalle de la respuesta...",
+    "tabs": {
+      "form": "Formulario",
+      "detail": "Detalle"
+    },
+    "emptyForm": "Este formulario no tiene campos para mostrar.",
+    "noAnswer": "Sin respuesta",
+    "yes": "Sí",
+    "no": "No",
+    "openFile": "Abrir archivo en una pestaña nueva"
   }
 }

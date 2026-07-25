@@ -4,7 +4,7 @@ import { EyeIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
-import { SubmissionDetailSheet } from "@/features/submissions/components/submission-detail-sheet";
+import { SubmissionDetailSheet } from "@/features/submissions/components/submission-detail/submission-detail-sheet";
 
 interface SubmissionActionsCellProps {
   submissionId: string;
