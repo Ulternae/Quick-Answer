@@ -3,14 +3,13 @@ import { redirect } from "next/navigation";
 
 import { Brand } from "@/components/common/brand";
 import { UserMenu } from "@/features/user/components/user-menu";
-import type { Locale } from "@/i18n/routing";
 import { UpstreamApiError } from "@/lib/server/api-client";
 import { getSessionState } from "@/lib/server/session";
 
 interface AppLayoutProps {
   children: ReactNode;
   params: Promise<{
-    locale: Locale;
+    locale: string;
   }>;
 }
 

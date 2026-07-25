@@ -1,12 +1,11 @@
 import { redirect } from "next/navigation";
 
-import type { Locale } from "@/i18n/routing";
 import { UpstreamApiError } from "@/lib/server/api-client";
 import { getSessionState } from "@/lib/server/session";
 
 interface HomePageProps {
   params: Promise<{
-    locale: Locale;
+    locale: string;
   }>;
 }
 
