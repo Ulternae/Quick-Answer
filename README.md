@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quick Answer
 
-## Getting Started
+Aplicación web para iniciar sesión, consultar respuestas de actividades y visualizar formularios dinámicos.
 
-First, run the development server:
+## Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[quick-answer-one.vercel.app](https://quick-answer-one.vercel.app/)
+
+### Credenciales
+
+```text
+Email: demo@prueba.tech
+Password: Demo1234!
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalación
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Requiere Node.js 20.9 o superior y pnpm.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+```
 
-## Learn More
+Crea un archivo `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_DEFAULT_LOCALE="es"
+API_BASE_URL="https://proincentive-api-dev-3sksn.ondigitalocean.app/api"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Inicia el entorno de desarrollo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+```
 
-## Deploy on Vercel
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm dev
+pnpm build
+pnpm start
+pnpm lint
+```
+
+## Funcionalidades
+
+- Autenticación y protección de rutas.
+- Renovación transparente de la sesión.
+- Listado, filtro por estado y paginación mediante la URL.
+- Detalle de respuestas y renderizado de formularios dinámicos.
+- Fechas adaptadas a la zona horaria del navegador.
+- Traducciones en español e inglés.
+- Estados de carga, error y vacío.
+- Cierre de sesión.
+- Diseño responsive y accesibilidad básica.
+
+## Retos opcionales implementados
+
+- Persistencia de sesión con `GET /auth/me`.
+- Renovación del access token mediante refresh token.
+- Cliente HTTP centralizado con manejo global de `401`.
+- Logout.
+- Detalle en Sheet con soporte para `checkbox`, `select`, `number`, `textarea` y archivos.
+- Filtros y paginación persistidos en la URL.
+- Internacionalización y zonas horarias.
+
+## Decisiones y supuestos
+
+1. **Sesión en cookies `httpOnly`:** los tokens se gestionan en el servidor para evitar exponerlos al JavaScript del navegador.
+2. **Cliente HTTP centralizado:** `authenticatedRequest` agrega el bearer token, intenta renovar la sesión ante un `401` y limpia las cookies cuando el refresh falla.
+3. **Estado en la URL:** el filtro y la página forman parte de la URL para conservar la navegación al recargar o compartir el enlace.
+4. **Errores con un contrato global:** los errores de Zod y los errores independientes se transforman al mismo formato. Los componentes pueden traducir códigos conocidos o mostrar directamente mensajes externos sin depender de la fuente del error.
+5. **Formulario con `useActionState`:** el login mantiene en un solo flujo el estado pendiente, los valores enviados y los errores devueltos por la Server Action, evitando estado duplicado en el cliente.
+6. **Datatable dirigido por el servidor:** la página y los filtros se leen desde la URL en el Server Component. La acción consulta únicamente los registros necesarios y entrega al datatable los datos junto con la metadata de paginación; el cliente solo actualiza la URL para solicitar la siguiente vista.
+
+El proyecto organiza cada dominio en `features`, separando tipos, schemas, acciones de servidor y componentes de presentación.
