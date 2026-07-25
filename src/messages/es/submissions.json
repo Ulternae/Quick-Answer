@@ -24,11 +24,12 @@
     "allStatuses": "Todos los estados"
   },
   "actions": {
-    "openMenu": "Abrir acciones de la respuesta",
     "viewDetails": "Ver detalle",
     "backToList": "Volver a las respuestas"
   },
   "detail": {
-    "title": "Respuesta de actividad"
+    "title": "Respuesta de actividad",
+    "description": "El detalle de la respuesta se está preparando para la siguiente fase de implementación.",
+    "loading": "Cargando detalle de la respuesta..."
   }
 }

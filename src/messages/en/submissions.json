@@ -24,11 +24,12 @@
     "allStatuses": "All statuses"
   },
   "actions": {
-    "openMenu": "Open submission actions",
     "viewDetails": "View details",
     "backToList": "Back to submissions"
   },
   "detail": {
-    "title": "Activity submission"
+    "title": "Activity submission",
+    "description": "The submission details are being prepared for the next implementation phase.",
+    "loading": "Loading submission details..."
   }
 }
