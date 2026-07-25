@@ -6,6 +6,10 @@ Aplicación web para iniciar sesión, consultar respuestas de actividades y visu
 
 [quick-answer-one.vercel.app](https://quick-answer-one.vercel.app/)
 
+## Video
+
+https://github.com/user-attachments/assets/26a16476-595b-4314-933b-d14d7b835bca
+
 ### Credenciales
 
 ```text
